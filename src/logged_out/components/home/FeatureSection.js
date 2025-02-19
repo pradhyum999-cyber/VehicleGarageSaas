@@ -1,14 +1,11 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import CodeIcon from "@mui/icons-material/Code";
 import BuildIcon from "@mui/icons-material/Build";
-import ComputerIcon from "@mui/icons-material/Computer";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import CloudIcon from "@mui/icons-material/Cloud";
 import MeassageIcon from "@mui/icons-material/Message";
-import CancelIcon from "@mui/icons-material/Cancel";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import ComputerIcon from "@mui/icons-material/Computer";
+import CloudIcon from "@mui/icons-material/Cloud";
 import calculateSpacing from "./calculateSpacing";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { withTheme } from "@mui/styles";
@@ -20,75 +17,57 @@ const iconSize = 30;
 const features = [
   {
     color: "#00C853",
-    headline: "Feature 1",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
+    headline: "Invoice Generation",
+    text:
+      "Generate and send professional invoices instantly. Track payments and manage cash flow efficiently.",
     icon: <BuildIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0",
   },
   {
     color: "#6200EA",
-    headline: "Feature 2",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CalendarTodayIcon style={{ fontSize: iconSize }} />,
+    headline: "Sales & Cost Charts",
+    text:
+      "Visualize your monthly sales and expenses with intuitive charts to make data-driven decisions.",
+    icon: <BarChartIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200",
   },
   {
     color: "#0091EA",
-    headline: "Feature 3",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
+    headline: "WhatsApp Integration",
+    text:
+      "Send automated service reminders and promotional messages directly via WhatsApp—no external app required.",
     icon: <MeassageIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0",
   },
   {
     color: "#d50000",
-    headline: "Feature 4",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <ComputerIcon style={{ fontSize: iconSize }} />,
+    headline: "Appointment & Service Management",
+    text:
+      "Schedule repairs and maintenance tasks easily with automated reminders to keep your operations running smoothly.",
+    icon: <CalendarTodayIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "200",
   },
   {
     color: "#DD2C00",
-    headline: "Feature 5",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <BarChartIcon style={{ fontSize: iconSize }} />,
+    headline: "Inventory Tracking",
+    text:
+      "Monitor spare parts and stock levels with real-time alerts to prevent service delays.",
+    icon: <ComputerIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "0",
   },
   {
     color: "#64DD17",
-    headline: "Feature 6",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <HeadsetMicIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "400",
-    smDelay: "200",
-  },
-  {
-    color: "#304FFE",
-    headline: "Feature 7",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
+    headline: "Cost-Effective Solution",
+    text:
+      "Enjoy a suite of powerful features at a low cost, designed specifically for small to mid-size garages in India.",
     icon: <CloudIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "0",
-    smDelay: "0",
-  },
-  {
-    color: "#C51162",
-    headline: "Feature 8",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CodeIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "200",
-    smDelay: "200",
-  },
-  {
-    color: "#00B8D4",
-    headline: "Feature 9",
-    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CancelIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
-    smDelay: "0",
+    smDelay: "200",
   },
 ];
 

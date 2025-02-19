@@ -1,14 +1,14 @@
 import { createTheme, responsiveFontSizes, adaptV4Theme } from "@mui/material";
 
 // colors
-const primary = "#b3294e";
-const secondary = "#4829B2";
-const black = "#343a40";
-const darkBlack = "rgb(36, 40, 44)";
-const background = "#f5f5f5";
-const warningLight = "rgba(253, 200, 69, .3)";
-const warningMain = "rgba(253, 200, 69, .5)";
-const warningDark = "rgba(253, 200, 69, .7)";
+const primary = "#0d47a1";      // Deep trustworthy blue
+const secondary = "#00796b";    // Sophisticated teal
+const black = "#343a40";       // Dark gray for text
+const darkBlack = "#212529";    // Slightly darker gray
+const background = "#ffffff";   // Pure white background
+const warningLight = "#fff3e0"; // Amber light
+const warningMain = "#ff9800";  // Amber main
+const warningDark = "#f57c00";  // Amber dark
 
 // border
 const borderWidth = 2;

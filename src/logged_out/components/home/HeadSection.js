@@ -1,71 +1,25 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Grid, Typography, Card, Button, Hidden, Box } from "@mui/material";
-import withStyles from "@mui/styles/withStyles";
-import WaveBorder from "../../../shared/components/WaveBorder";
+import {
+  Grid,
+  Typography,
+  Button,
+  Hidden,
+  Box,
+  TextField,
+  useMediaQuery,
+} from "@mui/material";
+import { withStyles } from "@mui/styles";
+import { LinkedIn as LinkedInIcon } from "@mui/icons-material";
 import ZoomImage from "../../../shared/components/ZoomImage";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = (theme) => ({
-  extraLargeButtonLabel: {
-    fontSize: theme.typography.body1.fontSize,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: theme.typography.h6.fontSize,
-    },
-  },
-  extraLargeButton: {
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(1.5),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-    },
-  },
-  card: {
-    boxShadow: theme.shadows[4],
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(3),
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(5),
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
-    },
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(5.5),
-      paddingBottom: theme.spacing(5.5),
-      paddingLeft: theme.spacing(5),
-      paddingRight: theme.spacing(5),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
-    },
-    [theme.breakpoints.down("xl")]: {
-      width: "auto",
-    },
-  },
   wrapper: {
     position: "relative",
     backgroundColor: theme.palette.secondary.main,
     paddingBottom: theme.spacing(2),
-  },
-  image: {
-    maxWidth: "100%",
-    verticalAlign: "middle",
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
   },
   container: {
     marginTop: theme.spacing(6),
@@ -76,7 +30,7 @@ const styles = (theme) => ({
     [theme.breakpoints.down("md")]: {
       marginBottom: theme.spacing(6),
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: theme.spacing(3),
     },
   },
@@ -85,8 +39,79 @@ const styles = (theme) => ({
       maxWidth: "none !important",
     },
   },
+  image: {
+    maxWidth: "100%",
+    verticalAlign: "middle",
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[4],
+  },
   waveBorder: {
     paddingTop: theme.spacing(4),
+  },
+  /* ========== Subscribe Field & Button ========== */
+  subscribeField: {
+    marginRight: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      marginBottom: 0,
+    },
+  },
+  buttonContainer: {
+    marginTop: theme.spacing(2),
+    display: "flex",
+    flexDirection: "column",
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+  },
+  subscribeButton: {
+    backgroundColor: "#fff",
+    color: theme.palette.secondary.main,
+    textTransform: "none",
+    borderRadius: 20,
+    fontWeight: "bold",
+    padding: theme.spacing(1, 3),
+    marginBottom: theme.spacing(2),
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.9)",
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginBottom: 0,
+    },
+  },
+  /* ========== LinkedIn Icon & Animation ========== */
+  linkedInLink: {
+    textDecoration: "none",
+    display: "inline-block",
+    marginLeft: theme.spacing(2), // Spacing to the right of the SUBSCRIBE button
+  },
+  linkedInIconAnimated: {
+    color: "#003087", // Darker shade for better visibility
+    fontSize: "3rem",
+    animation: "$bounce 2s infinite",
+    transition: "transform 0.3s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
+  },
+  "@keyframes bounce": {
+    "0%, 20%, 50%, 80%, 100%": {
+      transform: "translateY(0)",
+    },
+    "40%": {
+      transform: "translateY(-8px)",
+    },
+    "60%": {
+      transform: "translateY(-4px)",
+    },
+  },
+  /* ========== Text Colors ========== */
+  title: {
+    color: theme.palette.common.white,
+  },
+  subtitle: {
+    color: "rgba(255, 255, 255, 0.8)",
   },
 });
 
@@ -99,61 +124,81 @@ function HeadSection(props) {
       <div className={classNames("lg-p-top", classes.wrapper)}>
         <div className={classNames("container-fluid", classes.container)}>
           <Box display="flex" justifyContent="center" className="row">
-            <Card
-              className={classes.card}
-              data-aos-delay="200"
-              data-aos="zoom-in"
-            >
-              <div className={classNames(classes.containerFix, "container")}>
-                <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="space-between"
-                      height="100%"
-                    >
-                      <Box mb={4}>
-                        <Typography variant={isWidthUpLg ? "h3" : "h4"}>
-                          Free Template for building a SaaS app using
-                          Material-UI
-                        </Typography>
-                      </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography
-                            variant={isWidthUpLg ? "h6" : "body1"}
-                            color="textSecondary"
-                          >
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
-                          </Typography>
-                        </Box>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          classes={{ label: classes.extraLargeButtonLabel }}
-                          href="https://github.com/dunky11/react-saas-template"
-                        >
-                          Download from GitHub
-                        </Button>
-                      </div>
+            <div className={classNames(classes.containerFix, "container")}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                flexWrap="wrap"
+                className="row"
+              >
+                {/* Left Section: Title, Description, and Subscription Form */}
+                <Grid item xs={12} md={5}>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    height="100%"
+                  >
+                    <Box mb={4}>
+                      <Typography
+                        variant={isWidthUpLg ? "h3" : "h4"}
+                        className={classes.title}
+                      >
+                      Claim Your Free Product Before It’s Gone!
+                      </Typography>
                     </Box>
-                  </Grid>
-                  <Hidden mdDown>
-                    <Grid item md={6}>
-                      <ZoomImage
-                        src={`${process.env.PUBLIC_URL}/images/logged_out/headerImage.jpg`}
-                        className={classes.image}
-                        alt="header example"
+                    <Typography
+                      variant={isWidthUpLg ? "h6" : "body1"}
+                      className={classes.subtitle}
+                      paragraph
+                    >
+                      Subscribe now for exclusive launch updates and be among the first to know when we go live. 
+                      This complimentary offer is only available for a short time—don’t let it slip away. 
+                      Enter your email below and secure your spot before it’s too late!
+                    </Typography>
+
+                    {/* Subscription Field & Button, plus LinkedIn Icon */}
+                    <Box className={classes.buttonContainer}>
+                      <TextField
+                        variant="outlined"
+                        label="Email Address"
+                        type="email"
+                        className={classes.subscribeField}
+                        fullWidth
+                        InputLabelProps={{
+                          style: { color: "rgba(255, 255, 255, 0.8)" },
+                        }}
+                        inputProps={{
+                          style: { color: "#fff" },
+                        }}
                       />
-                    </Grid>
-                  </Hidden>
-                </Box>
-              </div>
-            </Card>
+                      <Button variant="contained" className={classes.subscribeButton}>
+                        SUBSCRIBE
+                      </Button>
+                      <a
+                        href="https://www.linkedin.com/in/YOUR-LINKEDIN-PROFILE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={classes.linkedInLink}
+                      >
+                        <LinkedInIcon className={classes.linkedInIconAnimated} />
+                      </a>
+                    </Box>
+                  </Box>
+                </Grid>
+
+                {/* Right Section: Image */}
+                <Hidden mdDown>
+                  <Grid item md={6}>
+                    <ZoomImage
+                      src={`${process.env.PUBLIC_URL}/images/logged_out/headerImage.jpg`}
+                      className={classes.image}
+                      alt="Product launch illustration"
+                    />
+                  </Grid>
+                </Hidden>
+              </Box>
+            </div>
           </Box>
         </div>
       </div>
@@ -168,8 +213,8 @@ function HeadSection(props) {
 }
 
 HeadSection.propTypes = {
-  classes: PropTypes.object,
-  theme: PropTypes.object,
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(HeadSection);
