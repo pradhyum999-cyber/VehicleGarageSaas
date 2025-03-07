@@ -80,7 +80,7 @@ const infos = [
   },
   {
     icon: <MailIcon />,
-    description: "support@company.com",
+    description: "support@garagesuite360.in",
   },
 ];
 
@@ -227,8 +227,9 @@ function Footer(props) {
               About the Company
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              At Garage Suite 360, we empower vehicle garages with a cutting-edge SaaS platform that streamlines invoicing, scheduling, and inventory management.
+              Our real-time analytics and automated WhatsApp reminders enable smart, data-driven decisions for efficient operations.
+              We transform traditional garage management into a modern, scalable, and cost-effective solution, driving growth for your business.
             </Typography>
             <Box display="flex">
               {socialIcons.map((socialIcon, index) => (
