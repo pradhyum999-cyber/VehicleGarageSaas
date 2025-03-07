@@ -2,7 +2,7 @@
   "name": "react-saas-template",
   "version": "1.0.0",
   "private": true,
-"homepage": "https://pradhyum999-cyber.github.io/VehicleGarageSaas",
+  "homepage": "https://pradhyum999-cyber.github.io/VehicleGarageSaas",
   "description": "Template for building an SaaS/admin application using React + Material-UI",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
@@ -16,6 +16,7 @@
     "@stripe/stripe-js": "^1.16.0",
     "aos": "^2.3.4",
     "classnames": "^2.3.1",
+    "date-fns": "^2.30.0",
     "emoji-mart": "^3.0.1",
     "js-cookie": "^3.0.1",
     "prop-types": "^15.7.2",
