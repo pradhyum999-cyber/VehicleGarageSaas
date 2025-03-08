@@ -68,7 +68,7 @@ function PricingSection(props) {
               title="Starter"
               pricing={
                 <span>
-                  $14.99
+                  ₹599
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
@@ -89,7 +89,7 @@ function PricingSection(props) {
               title="Premium"
               pricing={
                 <span>
-                  $29.99
+                  ₹999
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
@@ -109,7 +109,7 @@ function PricingSection(props) {
               title="Business"
               pricing={
                 <span>
-                  $49.99
+                  ₹1599
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
@@ -129,7 +129,7 @@ function PricingSection(props) {
               title="Tycoon"
               pricing={
                 <span>
-                  $99.99
+                  ₹1999
                   <Typography display="inline"> / month</Typography>
                 </span>
               }

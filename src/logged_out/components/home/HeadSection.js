@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
@@ -118,6 +118,44 @@ const styles = (theme) => ({
 function HeadSection(props) {
   const { classes, theme } = props;
   const isWidthUpLg = useMediaQuery(theme.breakpoints.up("lg"));
+  
+  // Added state for email and message
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Handle input changes
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  // Subscribe function that sends email to Firebase Cloud Function endpoint
+  const handleSubscribe = async () => {
+    if (!email) {
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+    try {
+      const response = await fetch(
+        "https://us-central1-vehicle-garage-saas.cloudfunctions.net/subscribe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+      if (response.ok) {
+        setMessage("Successfully subscribed! Thank you.");
+        setEmail("");
+      } else {
+        setMessage("Subscription failed. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setMessage("An error occurred. Please try again later.");
+    }
+  };
 
   return (
     <Fragment>
@@ -144,7 +182,7 @@ function HeadSection(props) {
                         variant={isWidthUpLg ? "h3" : "h4"}
                         className={classes.title}
                       >
-                      Claim Your Free Product Before It’s Gone!
+                        Claim Your Free Product Before It’s Gone!
                       </Typography>
                     </Box>
                     <Typography
@@ -152,9 +190,11 @@ function HeadSection(props) {
                       className={classes.subtitle}
                       paragraph
                     >
-                      Subscribe now for exclusive launch updates and be among the first to know when we go live. 
-                      This complimentary offer is only available for a short time—don’t let it slip away. 
-                      Enter your email below and secure your spot before it’s too late!
+                      Subscribe now for exclusive launch updates and be among the
+                      first to know when we go live. This complimentary offer is
+                      only available for a short time—don’t let it slip away.
+                      Enter your email below and secure your spot before it’s too
+                      late!
                     </Typography>
 
                     {/* Subscription Field & Button, plus LinkedIn Icon */}
@@ -165,6 +205,8 @@ function HeadSection(props) {
                         type="email"
                         className={classes.subscribeField}
                         fullWidth
+                        value={email}
+                        onChange={handleEmailChange}
                         InputLabelProps={{
                           style: { color: "rgba(255, 255, 255, 0.8)" },
                         }}
@@ -172,7 +214,11 @@ function HeadSection(props) {
                           style: { color: "#fff" },
                         }}
                       />
-                      <Button variant="contained" className={classes.subscribeButton}>
+                      <Button
+                        variant="contained"
+                        className={classes.subscribeButton}
+                        onClick={handleSubscribe}
+                      >
                         SUBSCRIBE
                       </Button>
                       <a
@@ -184,6 +230,14 @@ function HeadSection(props) {
                         <LinkedInIcon className={classes.linkedInIconAnimated} />
                       </a>
                     </Box>
+                    {message && (
+                      <Typography
+                        variant="body2"
+                        style={{ color: "#fff", marginTop: "8px" }}
+                      >
+                        {message}
+                      </Typography>
+                    )}
                   </Box>
                 </Grid>
 
